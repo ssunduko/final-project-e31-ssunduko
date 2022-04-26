@@ -11,31 +11,25 @@ export class AddvideoComponent implements OnInit {
   @Output() newVideo = new EventEmitter();
 
   video:any = {}
-  fileToUpload:any = null;
+  reviews:any ={}
 
   constructor(private videoService:VideoService) { }
-
-  fileInputField:any = null;
-
-  handleFileInput(target:any):void{
-    this.fileToUpload = target.files.item(0);
-    this.fileInputField = target;
-  }
 
   ngOnInit(){ }
 
   save(addvideoForm:any) : void {
     let formData = new FormData();
-    formData.append('image', this.fileToUpload, this.fileToUpload.name);
     formData.append('title', this.video.title);
     formData.append('description', this.video.description);
+    let reviews = { rating: '5', review: 'This is yet another review'};
+    formData.append('averageRating', '3');
+    formData.append('reviews', JSON.stringify(reviews));
     console.log("submitting");
     this.videoService.createVideo(formData)
       .subscribe((video)=>{
         console.log(video)
         this.newVideo.emit();
         addvideoForm.reset();
-        this.fileInputField.value="";
       });
   }
 }
