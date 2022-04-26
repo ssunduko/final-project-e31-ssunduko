@@ -18,19 +18,17 @@ export class AddvideoComponent implements OnInit {
   ngOnInit(){
   }
 
-  save(addvideoForm:any) : void {
+  save(addVideoForm:any) : void {
     let formData = new FormData()
-    let finalReviews = { rating: this.reviews.rating, review: this.reviews.review};
+    let formReviews = { rating: this.reviews.rating, review: this.reviews.review};
     formData.append('title', this.video.title);
     formData.append('description', this.video.description);
     formData.append('averageRating', this.reviews.rating);
-    formData.append('reviews', JSON.stringify(finalReviews));
-    console.log("submitting");
+    formData.append('reviews', JSON.stringify(formReviews));
     this.videoService.createVideo(formData)
       .subscribe((video)=>{
-        console.log(video)
         this.newVideo.emit();
-        addvideoForm.reset();
+        addVideoForm.reset();
       });
   }
 }

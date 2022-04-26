@@ -9,7 +9,6 @@ export class VideoService {
 
   constructor(private http:HttpClient) { }
 
-  // two basic read methods follow: list and "getOne"
   listVideos(){
     return this.http.get('http://localhost:8080/api/videos');
   }
@@ -18,7 +17,6 @@ export class VideoService {
     return this.http.get('http://localhost:8080/api/videos/' + id);
   }
 
-  // Other CRUD methods TBD`
   createVideo(video: FormData){
     return this.http.post('http://localhost:8080/api/videos/', video);
   }
