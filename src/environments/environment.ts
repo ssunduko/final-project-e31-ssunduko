@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiurl:'https://api.openweathermap.org/data/2.5/weather',
-  videoUrl:'https://api.openweathermap.org/data/2.5/weather'
+  apiurl:'https://apps.learningapi.com/',
+  videoUrl:'https://apps.learningapi.com'
 };

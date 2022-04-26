@@ -4,33 +4,31 @@ import { environment } from '../environments/environment';
 
 @Injectable()
 export class VideoService {
-  // track maxId value, will be incremented when we create()
-  maxId = 3;
+
   private apiurl:string = environment.apiurl;
-  videoUrl:string = environment.videoUrl;
 
   constructor(private http:HttpClient) { }
 
   // two basic read methods follow: list and "getOne"
   listVideos(){
-    return this.http.get(this.apiurl + 'api/videos');
+    return this.http.get(this.apiurl + 'api/photos');
   }
 
   getVideo(id:string){
-    return this.http.get(this.apiurl + 'api/videos/' + id);
+    return this.http.get(this.apiurl + 'api/photos/' + id);
   }
 
   // Other CRUD methods TBD`
   createVideo(video: FormData){
-    return this.http.post(this.apiurl+'api/videos', video);
+    return this.http.post(this.apiurl+'api/photos', video);
   }
 
   updateVideo(id:string, data:any){
-    return this.http.put(this.apiurl + 'api/videos/' + id, data);
+    return this.http.put(this.apiurl + 'api/photos/' + id, data);
   }
 
   deleteVideo(id:string){
-    return this.http.delete(this.apiurl + 'api/videos/' + id);
+    return this.http.delete(this.apiurl + 'api/photos/' + id);
   }
 
 }
